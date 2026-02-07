@@ -1,0 +1,66 @@
+<div class="page-container">
+
+    <div class="dashboard-header mb-4">
+        <h1 class="dashboard-title">Dashboard</h1>
+        <p class="dashboard-subtitle">Here's a summary of your visitor activity and trends.</p>
+    </div>
+
+    <!-- Summary Statistics Row -->
+    <div class="row g-3 mb-3">
+        <div class="col-xl-3 col-md-6" *ngFor="let stat of stats">
+            <div class="stat-card">
+                <div class="stat-icon-wrapper" [ngClass]="stat.color">
+                    <lucide-icon [name]="stat.icon" [size]="26"></lucide-icon>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-label">{{ stat.label }}</span>
+                    <h3 class="stat-value">{{ stat.value }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module Cards Row -->
+    <div class="row g-3">
+        <div class="col-xl-3 col-md-6" *ngFor="let mod of modules">
+            <div class="module-card" [routerLink]="mod.route" [ngClass]="{'clickable': mod.route}">
+                <div class="module-card-header mb-3">
+                    <div class="module-icon-box">
+                        <span nz-icon [nzType]="mod.icon" nzTheme="fill"
+                            style="font-size: 24px; color: var(--white);"></span>
+                    </div>
+                    <div class="module-info">
+                        <h5 class="module-name">
+                            {{ mod.name }}
+                            <lucide-icon *ngIf="mod.route" name="chevron-right" [size]="16"
+                                class="indicator-icon"></lucide-icon>
+                        </h5>
+                        <p class="module-description">{{ mod.description }}</p>
+                    </div>
+                </div>
+
+                <hr class="module-divider">
+                <div class="module-stats">
+                    <div class="module-stat-item" *ngFor="let mstat of mod.stats" [ngClass]="mstat.type">
+                        <span class="mstat-label">
+                            <lucide-icon *ngIf="mstat.type === 'active'" name="shield-check" [size]="16"></lucide-icon>
+                            <lucide-icon *ngIf="mstat.type === 'pending'" name="shield-alert" [size]="16"></lucide-icon>
+                            <lucide-icon *ngIf="mstat.type === 'completed'" name="circle-check-big"
+                                [size]="16"></lucide-icon>
+                            <lucide-icon *ngIf="mstat.type === 'generic' && mstat.label === 'Reports'"
+                                name="file-chart-column" [size]="16"></lucide-icon>
+                            <lucide-icon *ngIf="mstat.type === 'generic' && mstat.label === 'Dashboards'"
+                                name="layout-dashboard" [size]="16"></lucide-icon>
+                            <lucide-icon *ngIf="mstat.type === 'generic' && mstat.label === 'Insights'"
+                                name="chart-bar-big" [size]="16"></lucide-icon>
+
+                            {{ mstat.label }}
+                        </span>
+                        <span class="mstat-value">{{ mstat.value }}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

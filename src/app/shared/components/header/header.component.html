@@ -1,0 +1,39 @@
+<header class="main-header">
+  <div class="container-fluid">
+    <div class="header-content">
+      <div class="header-left">
+        <a routerLink="/" class="logo-link">
+          <div class="logo-container">
+            <!-- Placeholder for Logo -->
+            <div class="dmt-logo">
+              <img src="assets/dmt.svg" alt="DMT Logo" class="logo-img">
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="header-right">
+        <div class="user-profile" nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
+          <div class="user-info text-end me-2">
+            <span class="user-name d-block">{{ userName }}</span>
+            <span class="user-role badge">{{ userRole }}</span>
+          </div>
+          <div class="avatar-container">
+            <div class="avatar">
+              <lucide-icon name="user" [size]="20"></lucide-icon>
+            </div>
+            <lucide-icon name="chevron-down" [size]="16" [strokeWidth]="3" class="chevron"></lucide-icon>
+          </div>
+        </div>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Profile</li>
+            <li nz-menu-item>Settings</li>
+            <li nz-menu-item nzDanger>Logout</li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,15 +1,127 @@
 <div class="page-container">
 
-    <div class="planning-header mb-4">
-        <a routerLink="/" class="back-link mb-2">
-            <lucide-icon name="chevron-left" [size]="16" style="margin-top: -2px;"></lucide-icon>
-            <span class="ms-1">Back to Dashboard</span>
-        </a>
-        <h1 class="dashboard-title">Planning Task List</h1>
-        <p class="dashboard-subtitle">Manage and track all your planning requests and approvals.</p>
+    <!-- Header -->
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-start mb-1">
+        <div>
+            <a routerLink="/" class="back-link mb-2">
+                <lucide-icon name="chevron-left" [size]="16"></lucide-icon>
+                <span class="ms-1">Back to Dashboard</span>
+            </a>
+            <h1 class="dashboard-title">Transactions List</h1>
+            <p class="dashboard-subtitle">Here's a summary of your visitor activity and trends.</p>
+        </div>
+        <div class="task-header-actions d-flex gap-2">
+            <button class="btn btn-primary">
+                <lucide-icon name="plus" size="16"></lucide-icon> New Request
+            </button>
+            <button class="btn btn-primary">
+                <lucide-icon name="plus" size="16"></lucide-icon> VVIP Request
+            </button>
+        </div>
     </div>
 
-    <div class="content-placeholder">
-        <p>This is where the list of planning tasks will be displayed.</p>
+    <app-task-stats></app-task-stats>
+
+
+    <!-- Search & Filters -->
+    <!-- Search & Filters -->
+    <div class="task-filters-container mb-3">
+        <!-- Search -->
+        <div class="task-search-wrapper">
+            <lucide-icon name="search" size="20" class="task-search-icon"></lucide-icon>
+            <input type="text" class="task-search-input" placeholder="Search">
+        </div>
+
+        <!-- Tabs (Replaced with Global Segmented Control) -->
+        <app-segmented-control [options]="['Active Requests', 'Completed Request', 'Search & Export']"
+            [selected]="activeTab" (selectionChange)="setActiveTab($event)">
+        </app-segmented-control>
     </div>
+
+    <!-- Table -->
+    <!-- Table -->
+    <div class="task-table-container">
+        <table class="table task-custom-table">
+            <thead>
+                <tr>
+                    <th>Actions</th>
+                    <th>Request Number</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th (click)="toggleSort('createdOn')" style="cursor: pointer;">
+                        <div class="d-flex align-items-center gap-2">
+                            Created On
+                            <lucide-icon
+                                [name]="sortColumn === 'createdOn' && sortOrder === 'asc' ? 'arrow-up' : 'arrow-down'"
+                                size="14"></lucide-icon>
+                        </div>
+                    </th>
+                    <th>Plan Objective</th>
+                    <th>Procedure Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of displayedTransactions">
+                    <td>
+                        <button class="task-btn-icon">
+                            <lucide-icon name="locate-fixed" size="18" class="text-black"></lucide-icon>
+                        </button>
+                    </td>
+                    <td>
+                        <a class="task-request-link" [routerLink]="['/planning-tasks', item.id]">{{ item.id }}</a>
+                    </td>
+                    <td>
+                        <span class="status-badge" [class.new]="item.status === 'New'"
+                            [class.processing]="item.status === 'Processing'">
+                            {{ item.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge" *ngIf="item.priority" [class.high]="item.priority === 'High'"
+                            [class.critical]="item.priority.includes('Critical')">
+                            {{ item.priority }}
+                        </span>
+                    </td>
+                    <td class="task-date">{{ item.createdOn }}</td>
+                    <td class="task-objective">{{ item.objective }}</td>
+                    <td>{{ item.type }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="task-pagination-footer d-flex justify-content-between align-items-center p-3 border-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn task-btn-pagination" (click)="onPageChange(currentPage - 1)"
+                    [disabled]="currentPage === 1">
+                    <lucide-icon name="arrow-left" size="16" class="me-2"></lucide-icon> Previous
+                </button>
+
+                <div class="task-pagination-numbers d-flex align-items-center">
+                    <button *ngFor="let page of getPages()" class="btn task-btn-page"
+                        [class.active]="page === currentPage" (click)="onPageChange(page)">
+                        {{ page }}
+                    </button>
+                </div>
+
+                <button class="btn task-btn-pagination" (click)="onPageChange(currentPage + 1)"
+                    [disabled]="currentPage === totalPages">
+                    Next <lucide-icon name="arrow-right" size="16" class="ms-2"></lucide-icon>
+                </button>
+            </div>
+
+            <div class="task-per-page-selector" nz-dropdown [nzDropdownMenu]="pageMenu" [nzTrigger]="'click'">
+                Per Page: {{ pageSize }} <lucide-icon name="chevron-down" size="14"></lucide-icon>
+            </div>
+            <nz-dropdown-menu #pageMenu="nzDropdownMenu">
+                <ul nz-menu>
+                    <li nz-menu-item *ngFor="let size of pageSizeOptions" (click)="onPageSizeChange(size)">
+                        {{ size }}
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
+        </div>
+    </div>
+
 </div>

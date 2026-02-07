@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 
+
 const routes: Routes = [
     { path: '', component: TaskListComponent },
     { path: ':id', component: TaskDetailsComponent }
@@ -13,3 +14,4 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class PlanningTasksRoutingModule { }
+

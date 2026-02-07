@@ -1,0 +1,6 @@
+<div class="segmented-control">
+    <div *ngFor="let option of options; let i = index" class="segmented-item" [class.active]="selected === option"
+        [class.active-prev]="options[i+1] === selected" (click)="selectOption(option)">
+        {{ option }}
+    </div>
+</div>

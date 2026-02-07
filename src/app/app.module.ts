@@ -29,7 +29,7 @@ import {
 
 
 import { SharedModule } from './shared/shared.module';
-import { LucideAngularModule, User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft } from 'lucide-angular';
+import { LucideAngularModule, User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft, Plus, Search, Loader, ArrowDown, ArrowUp, Crosshair, ArrowLeft, ArrowRight, LocateFixed } from 'lucide-angular';
 
 
 
@@ -53,8 +53,9 @@ registerLocaleData(en);
     SharedModule,
 
     LucideAngularModule.pick({
-      User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft
+      User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft, Plus, Search, Loader, ArrowDown, ArrowUp, Crosshair, ArrowLeft, ArrowRight, LocateFixed
     })
+
 
 
   ],

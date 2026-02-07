@@ -6,11 +6,13 @@ import { SharedModule } from '../shared/shared.module';
 import { PlanningTasksRoutingModule } from './planning-tasks-routing.module';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
+import { TaskStatsComponent } from './task-stats/task-stats.component';
 
 @NgModule({
     declarations: [
         TaskListComponent,
-        TaskDetailsComponent
+        TaskDetailsComponent,
+        TaskStatsComponent
     ],
     imports: [
         CommonModule,
@@ -20,3 +22,4 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
     ]
 })
 export class PlanningTasksModule { }
+

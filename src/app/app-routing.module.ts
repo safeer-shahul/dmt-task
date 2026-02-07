@@ -12,8 +12,9 @@ const routes: Routes = [
   {
     path: 'planning-tasks',
     loadChildren: () => import('./planning-tasks/planning-tasks.module').then(m => m.PlanningTasksModule),
-    title: 'Planning Tasks'
+    title: 'Planning Transactions'
   }
+
 
 ];
 

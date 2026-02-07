@@ -1,0 +1,35 @@
+.segmented-control {
+    display: flex;
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: fit-content;
+}
+
+.segmented-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    color: #1a3353;
+    transition: all 0.2s;
+    user-select: none;
+    user-select: none;
+    border-right: 1px solid var(--gray-border);
+}
+
+.segmented-item:last-child {
+    border-right: none;
+}
+
+/* Active State */
+.segmented-item.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Hide border of the item preceding the active one to look clean */
+.segmented-item.active-prev {
+    border-right-color: transparent;
+}

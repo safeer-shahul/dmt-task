@@ -1,0 +1,135 @@
+/* Stats Container */
+.task-stats-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: white;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    width: 100%;
+}
+
+/* Individual Stat Item Group */
+.task-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.task-stat-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.task-stat-divider {
+    width: 1px;
+    height: 40px;
+    background-color: #E6E6E6;
+    margin: 0 40px;
+}
+
+/* Icon Wrappers */
+.task-stat-icon-wrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-stat-icon-wrapper.task-blue {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Ensure icon is centered */
+.task-stat-icon-wrapper lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+}
+
+.task-stat-icon-wrapper.task-header-yellow {
+    background-color: var(--ongoing-color);
+    color: white;
+}
+
+.task-stat-icon-wrapper.task-header-green {
+    background-color: var(--stat-green-text);
+    color: white;
+}
+
+/* Labels */
+.task-stat-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1a3353;
+}
+
+.task-text-primary {
+    color: var(--primary-color) !important;
+}
+
+.task-header-yellow-text {
+    color: var(--ongoing-color);
+}
+
+.task-header-green-text {
+    color: var(--stat-green-text);
+}
+
+/* Values (Badges) */
+.task-stat-value {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.task-badge-primary {
+    background-color: var(--primary-color) !important;
+    color: white;
+}
+
+/* Circular Progress */
+.task-circular-progress-container {
+    margin-left: auto;
+}
+
+.task-progress-ring-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a3353;
+}
+
+/* Using conic-gradient for progress ring */
+.task-progress-ring-circle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    /* Create the ring effect: mask inner part */
+    mask: radial-gradient(transparent 54%, black 57%);
+    -webkit-mask: radial-gradient(transparent 54%, black 57%);
+}
+
+.task-progress-ring-circle.task-yellow::before {
+    background: conic-gradient(var(--ongoing-color) calc(var(--percent) * 1%), #F5F5F5 0);
+}
+
+.task-progress-ring-circle.task-green::before {
+    background: conic-gradient(var(--stat-green-text) calc(var(--percent) * 1%), #F5F5F5 0);
+}

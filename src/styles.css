@@ -10,17 +10,29 @@
   --status-pending-text: #FFB300;
   --status-completed-bg: #E8F5E9;
   --status-completed-text: #2E7D32;
+  --ongoing-color: #FBB614;
+
+  /* Global Status Colors - New Request */
+  --status-new-bg: #ECFDF3;
+  --status-processing-bg: #EEF4FF;
+  --status-processing-text: #3538CD;
+  --status-high-bg: #FFF6ED;
+  --status-high-text: #FB6514;
+  --status-critical-bg: #FFEDED;
+  --status-critical-text: #FF0000;
 
   /* Text Colors */
   --text-main: #1A1A1A;
   --text-secondary: #666666;
   --text-muted: #999999;
   --gray-700: #414651;
+  --gray-50: #667085;
   --black: #000000;
 
   /* Common */
   --white: #FFFFFF;
   --divider-color: #969696;
+  --gray-border: #E5E5E5;
   --stat-blue-bg: #EFF6FF;
   --stat-blue-border: #E9F1FC;
   --stat-green-bg: #ECFFEF;
@@ -46,14 +58,6 @@
   --mstat-generic-item-bg: #F0F0F0;
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-
-
-
-
-
-
-
-
   --border-radius: 8px;
 }
 
@@ -61,8 +65,37 @@ body {
   background-color: var(--primary-bg);
   color: var(--text-main);
   font-family: 'Roboto', sans-serif;
-  margin: 0;
   -webkit-font-smoothing: antialiased;
+}
+
+button,
+.btn,
+.ant-btn {
+  border-radius: 8px !important;
+  font-size: 14px !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--white) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 18px;
+  gap: 6px;
+  line-height: 1;
+}
+
+.btn-primary lucide-icon {
+  display: flex;
+  align-items: center;
+}
+
+.btn-primary:hover {
+  background-color: #0c4699 !important;
+  border-color: #0c4699 !important;
+  color: var(--white) !important;
 }
 
 h1,
@@ -110,6 +143,7 @@ h6 {
 /* Layout & Containers */
 .page-container {
   padding: 32px;
+  background-color: var(--primary-bg);
 }
 
 /* Stat Cards */
@@ -219,7 +253,7 @@ h6 {
   min-width: 48px;
   height: 48px;
   background-color: var(--primary-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -257,7 +291,7 @@ h6 {
   flex: 1 1 0;
   min-width: 0;
   padding: 12px 5px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -273,7 +307,7 @@ h6 {
   justify-content: center;
   padding: 3px 5px;
   gap: 2px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   margin-bottom: 4px;
   width: 100%;
   white-space: nowrap;
@@ -337,4 +371,36 @@ h6 {
 
 .module-stat-item.generic .mstat-value {
   color: var(--mstat-generic-text);
+}
+
+/* Global Status Badges */
+.status-badge {
+  border-radius: 16px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+
+.status-badge.new {
+  background-color: var(--status-new-bg);
+  color: var(--stat-green-text);
+}
+
+.status-badge.processing {
+  background-color: var(--status-processing-bg);
+  color: var(--status-processing-text);
+}
+
+.status-badge.high {
+  background-color: var(--status-high-bg);
+  color: var(--status-high-text);
+}
+
+.status-badge.critical {
+  background-color: var(--status-critical-bg);
+  color: var(--status-critical-text);
 }

@@ -4,7 +4,6 @@
       <div class="header-left">
         <a routerLink="/" class="logo-link">
           <div class="logo-container">
-            <!-- Placeholder for Logo -->
             <div class="dmt-logo">
               <img src="assets/dmt.svg" alt="DMT Logo" class="logo-img">
             </div>
@@ -27,10 +26,20 @@
           </div>
         </div>
         <nz-dropdown-menu #menu="nzDropdownMenu">
-          <ul nz-menu>
-            <li nz-menu-item>Profile</li>
-            <li nz-menu-item>Settings</li>
-            <li nz-menu-item nzDanger>Logout</li>
+          <ul nz-menu class="profile-dropdown-menu">
+            <li nz-menu-item class="dropdown-item">
+              <lucide-icon name="user" [size]="16"></lucide-icon>
+              <span>Profile</span>
+            </li>
+            <li nz-menu-item class="dropdown-item">
+              <lucide-icon name="settings" [size]="16"></lucide-icon>
+              <span>Settings</span>
+            </li>
+            <li nz-menu-divider></li>
+            <li nz-menu-item class="dropdown-item logout">
+              <lucide-icon name="log-out" [size]="16"></lucide-icon>
+              <span>Logout</span>
+            </li>
           </ul>
         </nz-dropdown-menu>
       </div>

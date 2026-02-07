@@ -98,6 +98,42 @@ button,
   color: var(--white) !important;
 }
 
+.btn-success {
+  background-color: #387D39 !important;
+  border-color: #387D39 !important;
+  color: var(--white) !important;
+}
+
+.btn-success:hover {
+  background-color: #2e662f !important;
+  border-color: #2e662f !important;
+  color: var(--white) !important;
+}
+
+.btn-danger {
+  background-color: #D92D20 !important;
+  border-color: #D92D20 !important;
+  color: var(--white) !important;
+}
+
+.btn-danger:hover {
+  background-color: #b9251b !important;
+  border-color: #b9251b !important;
+  color: var(--white) !important;
+}
+
+.btn-warning {
+  background-color: #F79009 !important;
+  border-color: #F79009 !important;
+  color: var(--white) !important;
+}
+
+.btn-warning:hover {
+  background-color: #d67d06 !important;
+  border-color: #d67d06 !important;
+  color: var(--white) !important;
+}
+
 h1,
 h2,
 h3,
@@ -111,14 +147,14 @@ h6 {
 /* Global Navigation & Header Styles */
 .dashboard-title {
   color: var(--primary-color);
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: -4px;
+  margin-bottom: -2px;
 }
 
 .dashboard-subtitle {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .back-link {
@@ -387,7 +423,7 @@ h6 {
 
 .status-badge.new {
   background-color: var(--status-new-bg);
-  color: var(--stat-green-text);
+  color: var(--status-completed-text);
 }
 
 .status-badge.processing {

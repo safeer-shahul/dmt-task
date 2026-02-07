@@ -77,3 +77,88 @@
 .chevron {
     color: var(--primary-color);
 }
+
+/* Dropdown Menu Styles */
+::ng-deep .profile-dropdown-menu.ant-dropdown-menu {
+    min-width: 220px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E5E5;
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 14px !important;
+    border-radius: 8px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    height: auto !important;
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item lucide-icon {
+    color: var(--text-secondary);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 14px !important;
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item>span {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.4;
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item:hover {
+    background-color: var(--primary-bg) !important;
+    color: var(--primary-color) !important;
+    transform: translateX(4px);
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item:hover lucide-icon {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Logout Item - Completely Different Design */
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item.logout {
+    background: linear-gradient(135deg, #FEF3F2 0%, #FEE4E2 100%);
+    border: 1.5px solid #FECDCA;
+    color: #B42318;
+    margin-top: 8px;
+    font-weight: 600;
+    padding: 14px 16px !important;
+    box-shadow: 0 2px 4px rgba(217, 45, 32, 0.1);
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item.logout lucide-icon {
+    color: #D92D20;
+    margin-right: 12px !important;
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item.logout:hover {
+    background: linear-gradient(135deg, #FEE4E2 0%, #FED7D7 100%) !important;
+    border-color: #FCA5A5 !important;
+    color: #991B1B !important;
+    transform: translateX(6px);
+    box-shadow: 0 4px 8px rgba(217, 45, 32, 0.15);
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item.dropdown-item.logout:hover lucide-icon {
+    color: #991B1B;
+    transform: scale(1.15) rotate(-10deg);
+}
+
+::ng-deep .profile-dropdown-menu .ant-dropdown-menu-item-divider {
+    margin: 10px 0;
+    background-color: var(--gray-border);
+    opacity: 0.5;
+}

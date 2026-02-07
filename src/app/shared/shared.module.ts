@@ -29,7 +29,6 @@ import { SegmentedControlComponent } from './components/segmented-control/segmen
         SegmentedControlComponent,
         CommonModule,
         LucideAngularModule,
-        LucideAngularModule,
         NzIconModule,
         NzDropDownModule,
         NzButtonModule,

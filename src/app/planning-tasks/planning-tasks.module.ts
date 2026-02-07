@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { LucideAngularModule } from 'lucide-angular';
 import { SharedModule } from '../shared/shared.module';
@@ -16,6 +17,7 @@ import { TaskStatsComponent } from './task-stats/task-stats.component';
     ],
     imports: [
         CommonModule,
+        FormsModule,
         PlanningTasksRoutingModule,
         LucideAngularModule,
         SharedModule

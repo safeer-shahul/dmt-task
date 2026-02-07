@@ -27,11 +27,8 @@ import {
   BarChartOutline
 } from '@ant-design/icons-angular/icons';
 
-
 import { SharedModule } from './shared/shared.module';
-import { LucideAngularModule, User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft, Plus, Search, Loader, ArrowDown, ArrowUp, Crosshair, ArrowLeft, ArrowRight, LocateFixed } from 'lucide-angular';
-
-
+import { LucideAngularModule, User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft, Plus, Search, Loader, ArrowDown, ArrowUp, Crosshair, ArrowLeft, ArrowRight, LocateFixed, RotateCcw, XCircle, Layers, Map, Sliders, X, Route, Maximize2, Minimize2, LogOut } from 'lucide-angular';
 
 import { TitleStrategy } from '@angular/router';
 import { TemplatePageTitleStrategy } from './core/services/title-strategy.service';
@@ -53,11 +50,8 @@ registerLocaleData(en);
     SharedModule,
 
     LucideAngularModule.pick({
-      User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft, Plus, Search, Loader, ArrowDown, ArrowUp, Crosshair, ArrowLeft, ArrowRight, LocateFixed
+      User, Users, Clock, CheckCircle, ChevronDown, Layout, BarChart, FileText, PieChart, Folder, Settings, Menu, Home, Check, ShieldCheck, ShieldAlert, CircleCheckBig, FileChartColumn, LayoutDashboard, ChartBarBig, ChevronRight, ChevronLeft, Plus, Search, Loader, ArrowDown, ArrowUp, Crosshair, ArrowLeft, ArrowRight, LocateFixed, RotateCcw, XCircle, Layers, Map, Sliders, X, Route, Maximize2, Minimize2, LogOut
     })
-
-
-
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

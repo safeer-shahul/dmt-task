@@ -1,174 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../../core/services/task.service';
+import { Task, Stats } from '../../core/models/task.model';
 
 @Component({
     selector: 'app-task-list',
     templateUrl: './task-list.component.html',
     styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
     activeTab: string = 'Active Requests';
+    loading: boolean = false;
 
-    // Stats Data
-    stats = [
-        { title: 'My Request', count: 20, icon: 'user', color: '#1890FF', bg: '#E6F7FF' },
-        { title: 'Ongoing', count: 15, icon: 'loader', color: '#FAAD14', bg: '#FFF7E6' },
-        { title: 'Completed', count: '05', icon: 'check-circle', color: '#52C41A', bg: '#F6FFED' },
-    ];
+    stats: Stats[] = [];
+    transactions: Task[] = [];
 
-    // Pagination
     currentPage = 1;
     pageSize = 10;
     pageSizeOptions = [5, 10, 20, 50];
     displayedTransactions: any[] = [];
     totalPages = 1;
 
-    // Table Data
-    transactions = [
-        {
-            id: 'INT-LEXP-RLE-202602040003',
-            status: 'New',
-            statusColor: 'green',
-            priority: '',
-            createdOn: '22 Jan 2022, 01:00PM',
-            objective: 'Approval',
-            type: 'Residential Land Expansion'
-        },
-        {
-            id: 'INT-LPM-RLM-202602040001',
-            status: 'Processing',
-            statusColor: 'blue',
-            priority: '',
-            createdOn: '20 Jan 2022, 08:30AM',
-            objective: 'Approval',
-            type: 'Residential Land Parcel Merger'
-        },
-        {
-            id: 'INT-ANP-SERV-202602030003',
-            status: 'New',
-            statusColor: 'green',
-            priority: 'High',
-            createdOn: '24 Jan 2022, 10:20AM',
-            objective: 'Approval',
-            type: 'Allocation of a Service Utility Plot'
-        },
-        {
-            id: 'INT-ATL-TSF-202602030002',
-            status: 'New',
-            statusColor: 'green',
-            priority: 'High',
-            createdOn: '26 Jan 2022, 04:25PM',
-            objective: 'Decision',
-            type: 'Planning Approval for Establishing Temporary Service Facility Land'
-        },
-        {
-            id: 'INT-ATPB-DPB-202602030001',
-            status: 'Processing',
-            statusColor: 'blue',
-            priority: 'High',
-            createdOn: '18 Jan 2022, 11:00PM',
-            objective: 'Decision',
-            type: 'Development Project Boundaries'
-        },
-        {
-            id: 'VVIP-202602020011',
-            status: 'New',
-            statusColor: 'green',
-            priority: 'Critical/VIP',
-            createdOn: '18 Jan 2022, 11:00PM',
-            objective: 'Approval',
-            type: 'Land Subdivision'
-        },
-        {
-            id: 'VVIP-202602020010',
-            status: 'New',
-            statusColor: 'green',
-            priority: 'Critical/VIP',
-            createdOn: '18 Jan 2022, 11:00PM',
-            objective: 'Decision',
-            type: 'Land Subdivision'
-        },
-        // More mock data
-        {
-            id: 'INT-LEXP-RLE-202602040004',
-            status: 'Processing',
-            statusColor: 'blue',
-            priority: 'High',
-            createdOn: '22 Jan 2022, 02:00PM',
-            objective: 'Approval',
-            type: 'Residential Land Expansion'
-        },
-        {
-            id: 'INT-LPM-RLM-202602040005',
-            status: 'New',
-            statusColor: 'green',
-            priority: '',
-            createdOn: '20 Jan 2022, 09:30AM',
-            objective: 'Decision',
-            type: 'Residential Land Parcel Merger'
-        },
-        {
-            id: 'INT-ANP-SERV-202602030006',
-            status: 'Processing',
-            statusColor: 'blue',
-            priority: '',
-            createdOn: '24 Jan 2022, 11:20AM',
-            objective: 'Approval',
-            type: 'Allocation of a Service Utility Plot'
-        },
-        {
-            id: 'INT-ATL-TSF-202602030007',
-            status: 'New',
-            statusColor: 'green',
-            priority: 'High',
-            createdOn: '26 Jan 2022, 05:25PM',
-            objective: 'Decision',
-            type: 'Planning Approval'
-        },
-        {
-            id: 'INT-ATPB-DPB-202602030008',
-            status: 'Processing',
-            statusColor: 'blue',
-            priority: '',
-            createdOn: '18 Jan 2022, 11:45PM',
-            objective: 'Decision',
-            type: 'Development Project Boundaries'
-        },
-        {
-            id: 'VVIP-202602020012',
-            status: 'New',
-            statusColor: 'green',
-            priority: 'Critical/VIP',
-            createdOn: '19 Jan 2022, 10:00AM',
-            objective: 'Approval',
-            type: 'Land Subdivision'
-        },
-        {
-            id: 'VVIP-202602020013',
-            status: 'Processing',
-            statusColor: 'blue',
-            priority: '',
-            createdOn: '19 Jan 2022, 12:00PM',
-            objective: 'Decision',
-            type: 'Commercial Land'
-        },
-        {
-            id: 'INT-LEXP-RLE-202602040014',
-            status: 'New',
-            statusColor: 'green',
-            priority: 'High',
-            createdOn: '22 Jan 2022, 03:00PM',
-            objective: 'Approval',
-            type: 'Residential Land Expansion'
-        }
-    ];
-
     // Sorting
     sortColumn: string = 'createdOn'; // Default sort column
     sortOrder: 'asc' | 'desc' = 'desc'; // Default sort order
 
+    constructor(private taskService: TaskService) { }
+
     ngOnInit() {
-        this.sortTransactions();
-        this.updateDisplayedTransactions();
+        this.loadData();
+    }
+
+    loadData() {
+        this.loading = true;
+
+        this.taskService.getStats().subscribe({
+            next: (stats) => {
+                this.stats = stats;
+            },
+            error: (error) => {
+                console.error('Error loading stats:', error);
+                this.loading = false;
+            }
+        });
+
+        this.taskService.getTasks().subscribe({
+            next: (tasks) => {
+                this.transactions = tasks;
+                this.sortTransactions();
+                this.updateDisplayedTransactions();
+                this.loading = false;
+            },
+            error: (error) => {
+                console.error('Error loading tasks:', error);
+                this.loading = false;
+            }
+        });
     }
 
     setActiveTab(tab: string) {

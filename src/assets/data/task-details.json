@@ -1,0 +1,65 @@
+{
+    "steps": [
+        {
+            "label": "Register Application",
+            "status": "completed",
+            "icon": "check"
+        },
+        {
+            "label": "Pending Review",
+            "status": "ongoing",
+            "icon": "clock"
+        },
+        {
+            "label": "DraftMan",
+            "status": "pending",
+            "icon": "file-text"
+        },
+        {
+            "label": "Pending Reviewer",
+            "status": "pending",
+            "icon": "user"
+        },
+        {
+            "label": "Planning Approval",
+            "status": "pending",
+            "icon": "check-square"
+        },
+        {
+            "label": "GIS Review",
+            "status": "pending",
+            "icon": "map"
+        },
+        {
+            "label": "GIS Approval",
+            "status": "pending",
+            "icon": "map-pin"
+        },
+        {
+            "label": "ADREC Approval",
+            "status": "pending",
+            "icon": "shield"
+        },
+        {
+            "label": "Completed",
+            "status": "pending",
+            "icon": "flag"
+        }
+    ],
+    "details": {
+        "areaType": "residential",
+        "landType": "residentialLand",
+        "initiatedBy": "User007",
+        "approvedBy": "executiveDirectorTPS",
+        "planningStatus": "Final Approval",
+        "temporalStatus": "Permanent",
+        "constructionStatus": "Constructed",
+        "oldPlotArea": "3716.14",
+        "newPlotArea": "3716.14"
+    },
+    "assignees": [
+        "User001",
+        "User002",
+        "User003"
+    ]
+}

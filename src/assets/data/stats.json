@@ -1,0 +1,23 @@
+[
+    {
+        "title": "My Request",
+        "count": 20,
+        "icon": "user",
+        "color": "#1890FF",
+        "bg": "#E6F7FF"
+    },
+    {
+        "title": "Ongoing",
+        "count": 15,
+        "icon": "loader",
+        "color": "#FAAD14",
+        "bg": "#FFF7E6"
+    },
+    {
+        "title": "Completed",
+        "count": "05",
+        "icon": "check-circle",
+        "color": "#52C41A",
+        "bg": "#F6FFED"
+    }
+]

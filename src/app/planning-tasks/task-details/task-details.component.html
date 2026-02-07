@@ -47,6 +47,11 @@
 
         <!-- Scrollable Details Area -->
         <div class="details-card-wrapper position-relative">
+            <!-- Loading Overlay -->
+            <div class="details-loader-overlay" *ngIf="loading">
+                <div class="loader-spinner"></div>
+            </div>
+
             <!-- Expand/Collapse Button -->
             <button class="expand-toggle-btn" (click)="toggleExpand()" [title]="isExpanded ? 'Collapse' : 'Expand'">
                 <lucide-icon name="minimize-2" [size]="16" *ngIf="isExpanded"></lucide-icon>
